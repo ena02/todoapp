@@ -2,6 +2,8 @@ package com.example.todoapp.controller;
 
 import com.example.todoapp.entity.Category;
 import com.example.todoapp.repo.CategoryRepository;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import sun.awt.geom.AreaOp;
@@ -22,5 +24,10 @@ public class CategoryController {
         List<Category> list = categoryRepository.findAll();
 
         return list;
+    }
+
+    @PostMapping("/add")
+    public Category add(@RequestBody Category category) {
+        return categoryRepository.save(category);
     }
 }
